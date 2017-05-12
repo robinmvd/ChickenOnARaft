@@ -11,37 +11,78 @@
 
 ## Opdracht 2
 
-- We gaan de kip bewapenen: geef een kip random wel of geen wapen
-- Het html element van de gun staat in het html element van de kip.
-- Een wapen moet een verwijzing naar de main game krijgen. Die kan je doorgeven via de constructors.
-- Een wapen kan bullet instances aanmaken bv. met een setInterval of na een Event (keyboardEvent of mouseEvent)
-- De bullets worden bijgehouden in een array.
-- Denk na over in welke class de array van rondvliegende kogels bijgehouden moet worden.
-- Zorg dat de update functie van de bullets wordt aangeroepen
+- We gaan de kip bewapenen. Geef de kip een `click` event listener.
+- Bij een muisklik krijgt de kip een gun: `this.gun = new Gun();`
+- De gun heeft een `public fire(){}` functie.
+- Als je op de kip klikt terwijl hij al een gun heeft, dan roep je de `fire()` functie van de gun aan. Gebruik console.log om te zien of alles werkt.
+
+## Opdracht 3
+
+Omdat de bullet moet blijven bestaan als de kip en de gun weg zijn, kan de bullet geen child zijn van de gun. Het is ook niet mooi als de bullet mee beweegt met de gun. Daarom voegen we de bullet toe aan de game, op hetzelfde niveau als de rafts. 
+
+- De `fire()` functie van de gun maakt een nieuwe bullet aan: `let b:Bullet = new Bullet(x,y);`
+- De bullet moet de x en y positie van de kip op het vlot weten, om op de goede plek gezet te worden. Zie voorbeeldcode!
+- Game.ts krijgt een array voor de bullets.
+- Game.ts roept de `move` functie van de bullets aan.
+- Game.ts heeft een `addBullet()` functie waarmee je kogels aan de game kan toevoegen. 
+- De `fire()` functie van de gun voegt de bullet toe aan game met `this.game.addBullet();`
 
 ### Voorbeeldcode
 
-#### Keyboard and mouse
-```
-window.addEventListener("keyup", (e:KeyboardEvent) => this.onKeyUp(e));
-this.div.addEventListener("click", (e:MouseEvent) => this.onClick(e));
-```
+#### Verwijzingen doorgeven
 
-#### start en stop Interval
+Via de constructor kan je een verwijzing naar de game doorgeven aan zijn children. Dit is handig als een child een functie van de game moet kunnen aanroepen. In dit voorbeeld zie je hoe de Chicken de gameOver functie van Game kan aanroepen:
 ```
 class Game {
-
-    intervalId:number;
-       
-    constructor() {
-       this.intervalId = setInterval(() => this.doSomething(), 1000 );
+    constructor(){
+        let raft = new Raft(this);
     }
-    
-    doSomething():void {
-        // interval uit zetten
-        clearInterval(this.intervalId);
+    public gameOver(){
+        console.log("game over man!");
+    }
+}
+class Raft {
+    private game:Game;
+    constructor(g:Game){
+        this.game = g;
+        let chicken = new Chicken(this.game);
+    }
+}
+class Chicken {
+    private game:Game;
+    constructor(g:Game){
+        this.game = g;
+        this.game.gameOver();
     }
 }
 ```
 
-[Theme song](http://chickenonaraft.com);
+#### Click Listener
+```
+this.div.addEventListener("click", (e:MouseEvent) => this.onClick(e));
+```
+
+#### Check of een object al bestaat
+```
+this.gun = new Gun();
+
+if(this.gun){
+    console.log("De kip heeft al een gun!");
+}
+```
+
+#### De absolute positie van een DOM element
+
+Als je van een child element (zoals de gun of de kip) de x en y positie opvraagt, dan krijg je zijn relatieve positie ten opzichte van zijn parent. In deze voorbeeldcode vragen we de absolute positie in het HTML document op:
+
+```
+// de globale positie van de gun opvragen
+let rect:ClientRect = this.div.getBoundingClientRect();
+
+// de positie van de gun aan de bullet geven 
+let bullet = new Bullet(rect.left, rect.top);
+```
+
+### Theme Song
+
+[Chicken on a raft](http://chickenonaraft.com)
