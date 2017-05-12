@@ -6,16 +6,14 @@ class Game {
  
     constructor() {
         this.trees = new Array<Tree>();
-        // maak meerdere trees aan
-        this.trees.push(new Tree(-420, 180));
+        
+        // plaats trees in de array
         
         requestAnimationFrame(() => this.gameLoop());
     }
     
     private gameLoop(){
-        for(let t of this.trees){
-            t.move();
-        }
+        // gebruik een for..of loop om de move functie van alle trees in de array aan te roepen
                 
         requestAnimationFrame(() => this.gameLoop());
     }
