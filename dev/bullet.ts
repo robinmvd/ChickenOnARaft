@@ -4,10 +4,10 @@ class Bullet {
     
     private div: HTMLElement;
     
-    public x:number;
-    public y:number;
-    public width:number = 22;
-    public height:number = 22;
+    private x:number;
+    private y:number;
+    private width:number = 22;
+    private height:number = 22;
     private xspeed:number;
     private yspeed:number;
 

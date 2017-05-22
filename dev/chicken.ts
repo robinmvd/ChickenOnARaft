@@ -1,23 +1,27 @@
 /// <reference path="tree.ts"/>
 
 class Chicken {
-        
-    public div: HTMLElement;
-    public x:number;
-    public y:number;
-    public width:number;
-    public height:number;
+    
+    private _div: HTMLElement;
+    private x:number;
+    private y:number;
+    private width:number;
+    private height:number;
+
+    public get div(): HTMLElement {
+		return this._div;
+	}
 
     constructor(x:number, y:number, tree:Tree) {
-        this.div = document.createElement("bird");
-        tree.div.appendChild(this.div);
+        this._div = document.createElement("bird");
+        tree.div.appendChild(this._div);
                 
         this.x = x;
         this.y = y;
         this.width = 67;
         this.height = 110;
         
-        this.div.style.transform = "translate("+this.x+"px, "+this.y+"px)";
+        this._div.style.transform = "translate("+this.x+"px, "+this.y+"px)";
 
         // maak hier een click listener
         // de click event handler moet een gun toevoegen

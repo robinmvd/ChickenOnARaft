@@ -3,8 +3,8 @@
 class Gun {
     
     private div: HTMLElement;
-    public x:number;
-    public y:number;
+    private x:number;
+    private y:number;
 
     constructor(chicken:Chicken) {
         this.div = document.createElement("gun");
