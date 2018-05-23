@@ -4,11 +4,11 @@
 
 ## Opdracht 1
 
-- Maak meerdere vloten aan in game.ts
+- Maak meerdere vlotten aan in game.ts
 - Plaats op elk vlot een random aantal kippen
 - Het HTML element van de kip append je aan het HTML element van het vlot
 - De kippen komen op de x as netjes naast elkaar te staan
-- Game roept de update functie van de vloten aan. 
+- Game roept de update functie van de vlotten aan. 
 - Een vlot roept de update functie van zijn kippen aan.
 
 ## Opdracht 2
