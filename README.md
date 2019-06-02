@@ -26,7 +26,7 @@
 
 ![UML](docs/images/uml.png?raw=true "UML")
 
-## Game functies aanroepen
+# Voorbeeldcode
 
 Via de constructor kan je een verwijzing naar de game doorgeven aan zijn children. In dit voorbeeld kan de chicken de gameover functie van de game aanroepen:
 ```
