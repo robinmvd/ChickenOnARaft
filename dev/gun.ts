@@ -2,7 +2,7 @@
 
 class Gun {
     
-    private div: HTMLElement;
+    public div: HTMLElement;
     private x:number;
     private y:number;
 
@@ -20,10 +20,10 @@ class Gun {
 
     public fire():void {
         // de globale positie van de gun kan je uitrekenen met getBoundingRect
-        let rect:ClientRect = this.div.getBoundingClientRect();      
-        console.log("plaats een kogel op " + rect.left + " , " + rect.top);
+        let rect:ClientRect = this.div.getBoundingClientRect()
+        console.log("plaats een kogel op " + rect.left + " , " + rect.top)
 
-        // maak hier een bullet en voeg die toe aan de bullets array van de game
+        // maak hier een bullet en voeg die toe aan de bullets array van de game (niet van de gun!)
         // ...
     }
 

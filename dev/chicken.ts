@@ -2,26 +2,22 @@
 
 class Chicken {
     
-    private _div: HTMLElement;
-    private x:number;
-    private y:number;
-    private width:number;
-    private height:number;
-
-    public get div(): HTMLElement {
-		return this._div;
-	}
+    public div: HTMLElement
+    private x:number
+    private y:number
+    private width:number
+    private height:number
 
     constructor(x:number, y:number, tree:Tree) {
-        this._div = document.createElement("bird");
-        tree.div.appendChild(this._div);
+        this.div = document.createElement("bird")
+        tree.div.appendChild(this.div)
                 
-        this.x = x;
-        this.y = y;
-        this.width = 67;
-        this.height = 110;
+        this.x = x
+        this.y = y
+        this.width = 67
+        this.height = 110
         
-        this._div.style.transform = "translate("+this.x+"px, "+this.y+"px)";
+        this.div.style.transform = `translate(${this.x}px, ${this.y}px)`
 
         // maak hier een click listener
         // de click event handler moet een gun toevoegen

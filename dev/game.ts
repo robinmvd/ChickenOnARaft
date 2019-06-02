@@ -2,20 +2,25 @@
 
 class Game {
     
-    private trees:Array<Tree>;
+    private trees:Tree[] = []
  
     constructor() {
-        this.trees = new Array<Tree>();
+        // de game heeft trees nodig
+
+
         
-        // plaats trees in de array
-        
-        requestAnimationFrame(() => this.gameLoop());
+        // start de game loop
+        this.gameLoop()
     }
     
     private gameLoop(){
         // gebruik een for..of loop om de move functie van alle trees in de array aan te roepen
+
+        
                 
-        requestAnimationFrame(() => this.gameLoop());
+        // animation
+        requestAnimationFrame(() => this.gameLoop())
     }
 } 
 
+window.addEventListener("load", () => new Game())
