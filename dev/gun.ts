@@ -2,20 +2,20 @@
 
 class Gun {
     
-    public div: HTMLElement;
-    private x:number;
-    private y:number;
+    public div: HTMLElement
+    private x:number
+    private y:number
 
     constructor(chicken:Chicken) {
-        this.div = document.createElement("gun");
-        chicken.div.appendChild(this.div);
+        this.div = document.createElement("gun")
+        chicken.div.appendChild(this.div)
 
-        this.x = 20;
-        this.y = 40;
+        this.x = 20
+        this.y = 40
         
-        this.div.style.transform = "translate("+this.x+"px, "+this.y+"px)";
+        this.div.style.transform = "translate("+this.x+"px, "+this.y+"px)"
 
-        this.fire();
+        this.fire()
     }
 
     public fire():void {

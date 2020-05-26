@@ -11,7 +11,8 @@ class Tree {
 
     constructor(x:number, y:number) {
         this.div = document.createElement("tree")
-        document.body.appendChild(this.div)
+        let game = document.getElementsByTagName("game")[0]
+        game.appendChild(this.div)
         
         this.speed = Math.random() * 4 + 1
         this.width = 414

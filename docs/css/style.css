@@ -7,7 +7,7 @@ html, body {
     background-size: cover;
 }
 
-body * {
+game * {
     position: absolute;
     display: block;
     margin:0px; padding:0px;
