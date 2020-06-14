@@ -6,9 +6,13 @@ class Gun {
     private x:number
     private y:number
 
-    constructor(chicken:Chicken) {
+    private game : Game
+
+    constructor(chicken:Chicken, game : Game) {
         this.div = document.createElement("gun")
         chicken.div.appendChild(this.div)
+
+        this.game = game
 
         this.x = 20
         this.y = 40
@@ -25,6 +29,7 @@ class Gun {
 
         // maak hier een bullet en voeg die toe aan de bullets array van de game (niet van de gun!)
         // ...
+        this.game.addBullet(new Bullet(rect.left, rect.top))
     }
 
 }
