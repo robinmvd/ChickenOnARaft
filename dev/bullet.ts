@@ -6,8 +6,7 @@ class Bullet {
     
     private x:number
     private y:number
-    private width:number = 22
-    private height:number = 22
+    
     private xspeed:number
     private yspeed:number
 
